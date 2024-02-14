@@ -1,0 +1,82 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif; /** added google font body */
+    margin: 0;
+    padding: 0;
+}
+/*Size of the result*/
+#result {
+  font-size: 2.5rem;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif; /** added specific google font to the h1 element signifying the webpage's title*/
+}
+h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans JP', sans-serif; /** added same google font as body to the rest of the headers */
+}
+/** added hide class to display local storage text*/
+.hide {
+    display: none;
+}
+#valueOfLS {
+    width: fit-content;
+}
+/** End of my code */
+
+
+
+.navbar {
+    background-color: rgb(95, 163, 182);
+  }
+  
+  h1 {
+    color: white;
+    font-size:xx-large
+  }
+    .navbar-item {
+        color: black;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  .navbar-item:hover {
+    color: #000000;
+    background-color: #F2E1E1;
+  }
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 42%;
+  text-align: center;
+  font-size: larger;
+  font-weight: 800;
+  color: #ff0000;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
