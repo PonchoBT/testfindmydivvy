@@ -6,41 +6,40 @@ var fromCu = document.getElementById("fromCu");
 
 // wrapping all code that interacts with the dom within this function:
 $(function () {
+  // Define apiUrl in a scope accessible to all functions that need it
+  var apiUrl = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/";
+
   var burgerIcon = document.querySelector("#burger");
   var navBarMenu = document.querySelector("#navbar-links");
   burgerIcon.addEventListener("click", () => {
     navBarMenu.classList.toggle("is-active");
   });
 
-  // function to update time, date, and currency values in real time
+  // Function to update time, date, and currency values in real time
   function updateTime() {
     var now = dayjs();
-    $("#today").text(now.format("dddd, MMMM DD, YYYY")); //! date
-    $("#hour").text(now.format("h:mm:ss A")); //! time
-    var apiUrl =
-      "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/";
-    // Fetch data for 1 USD to MXN conversion
-    fetch(apiUrl + "mxn/usd.json")
-      .then((response) => response.json())
-      .then((data) => {
-        var exchangeRate = data.usd;
-        document.getElementById(
-          "mxnToday"
-        ).textContent = `🇲🇽 1 MXN = $${exchangeRate.toFixed(2)} USD`;
-      })
-      .catch((error) => {
-        console.error("Error fetching currency rates:", error);
-      });
-    // Fetch data for 1 MXN to USD conversion
+    $("#today").text(now.format("dddd, MMMM DD, YYYY")); // Corrected date format
+    $("#hour").text(now.format("h:mm:ss A")); // Corrected time format
+
+    // Fetch data for 1 USD to MXN and 1 MXN to USD conversions
     fetch(apiUrl + "usd/mxn.json")
       .then((response) => response.json())
       .then((data) => {
         var exchangeRate = data.mxn;
-        document.getElementById(
-          "usdToday"
-        ).textContent = `🇺🇸 1 USD  = $${exchangeRate.toFixed(2)} MXN`;
+        document.getElementById("usdToday").textContent = `🇺🇸 1 USD = $${exchangeRate.toFixed(2)} MXN`;
+      })
+      .catch((error) => {
+        console.error("Error fetching currency rates:", error);
+      });
+
+    fetch(apiUrl + "mxn/usd.json")
+      .then((response) => response.json())
+      .then((data) => {
+        var exchangeRate = data.usd;
+        document.getElementById("mxnToday").textContent = `🇲🇽 1 MXN = $${exchangeRate.toFixed(2)} USD`;
       });
   }
+
   // Update date and time immediately
   updateTime();
   // Update date and time every second
